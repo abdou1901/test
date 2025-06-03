@@ -1,3 +1,15 @@
-The **time complexity** is **O(n)**, where **n** is the number of digits in the integer. This is because the algorithm processes each digit exactly once.
-
-The **space complexity** is **O(1)** because the algorithm uses only a fixed amount of extra space (for variables like 'result', 'i', etc.) regardless of the input size.
+**Basic Test Case**
+ - Input: x = 123
+ - Output: 321
+ - Explanation: Reverse the digits of 123 to get 321.
+ 
+**Handling negatives**
+ - Input: x = -123
+ - Output: -321
+ - Explanation: Reverse the digits of -123 to get -321.
+  
+**Edge Case with overflow**
+ - Input: x = 1534236469
+ - Output: 0
+ - Explanation: Reversing 1534236469 gives 9646324351 which overflows, so the function should return 0.
+  

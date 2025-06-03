@@ -1,15 +1,2 @@
-**Basic Test Case**
- - Input: x = 123
- - Output: 321
- - Explanation: Reverse the digits of 123 to get 321.
- 
-**Handling negatives**
- - Input: x = -123
- - Output: -321
- - Explanation: Reverse the digits of -123 to get -321.
-  
-**Edge Case with overflow**
- - Input: x = 1534236469
- - Output: 0
- - Explanation: Reversing 1534236469 gives 9646324351 which overflows, so the function should return 0.
-  
+The solution effectively reverses the digits, but it's important to handle the case when the reversed number overflows a 32-bit signed integer. Alternatively, consider using additional checks for value ranges during each digit extraction step to further simplify the code.
+It's also a good practice to ensure all boundaries the algorithm were described are tested.

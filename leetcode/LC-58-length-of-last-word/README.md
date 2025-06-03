@@ -1,51 +1,54 @@
 ## Problem Summary
-The Length of Last Word problem on LeetCode asks us to compute the length of the last word in a given string, where words are separated by spaces and leading or trailing spaces might exist.
+The "Length of Last Word" problem on LeetCode challenges you to find the length of the last word in a given string. A word is defined as a sequence of non-space characters. The string may contain leading, trailing, or multiple spaced characters between words.
 
 ## Input/Output Description
-- **Input**: The function takes a single string `s` as an input parameter, which is a pointer to a character array in C.
-- **Output**: The function returns an integer representing the length of the last word in the input string.
+- **Input**: A string of characters.
+- **Output**: An integer representing the length of the last word in the input string.
 
 ## Approach 
-The strategy employed in the solution is as follows:
-1. Find the end of the string and then ignore trailing spaces.
-2. Traverse backwards until the start of the last word by counting the characters or using spaces as the stop.
-3. Return the length of the identified last word.
+The solution involves the following steps:
+1. Start from the end of the string and move backward until a non-space character is found.
+2. Continue moving backward, counting the length of the current word until a space or the start of the string is reached.
+3. Return the length of the word.
 
 ## Code Walkthrough 
 Here's the submitted solution explained:
 ```c
 int lengthOfLastWord(char* s) {
     int i = strlen(s) - 1;
-    while(s[i] == ' ') i--;
+    while (s[i] == ' ') i--;
     int length = 0;
-    while(i >= 0 && s[i] != ' ') {length++; i--;}
+    while (i >= 0 && s[i] != ' ') {length++; i--;}
     return length;
 }
 ```
 ### Key Points
-- **Initial Index**: 'int i = strlen(s) - 1;' sets the starting index to the last character of the string.
-- **Skip Trailing Spaces**: 'while(s[i] == ' ' ') i--;' moves the index backwards until it finds the last character that is not a space.
-- **Word Length Calculation**: 'while (i >= 0 && s[i] != ' ' ') {length++; i--;}' counts the characters of the last word by moving backwards until a space or the start of the string is found.
+- **Initial Traversal**: The first loop 'while (s[i] == '')' skips trailing spaces.
+- **Counting Length**: The second loop 'while (i >= 0 && s[i] != ' ')' counts the length of the last word by moving backward from the end.
+- **Edge Cases**: The solution assumes the string is non-empty and correctly handles trailing and multiple spaces.
 
-## Complexity Analysis 
-- **Time Complexity**: O(n). In the worst case, we traverse the string once to handle all spaces and characters.
-- **Space Complexity**: O(1). The solution uses a constant amount of extra space for the variables 'length' and 'i'.
+## Complexity Analysis
+- **Time Complexity**: O(n), where n is the length of the string. The solution traverses the string at most twice (to remove trailing spaces and count the last word).
+- **Space Complexity**: O(1). Only a few extra variables are used.
 
 ## Test Cases
-Let's validate our function with a few sample test cases:
+Let's test our function with a few examples:
 1. **Case 1**: Input = "Hello World"
    - Expected Output: 5
-   - Explanation: The last word is 'World', which has 5 characters.
-2. **Case 2**: Input = "   fly me   to  the moon   "
+   - Explanation: The last word is "World", which has 5 characters.
+2. **Case 2**: Input = "   fly me   to   the moon  "
    - Expected Output: 4
-   - Explanation: The last word, after ignoring spaces, is 'moon', which has 4 characters.
+   - Explanation: The last word is "moon", which has 4 characters, ignoring the trailing spaces.
 3. **Case 3**: Input = "luffy is still joyboy"
    - Expected Output: 6
-   - Explanation: The last word 'joyboy' has 6 characters.
-4. **Case 4**: Input = " "
+   - Explanation: The last word is "joyboy", which has 6 characters.
+4. **Case 4**: Input = ""
    - Expected Output: 0
-   - Explanation: There are no words in the input string, only spaces.
+   - Explanation: An empty string has no words, so the length is 0.
+5. **Edge Case**: Input = "a"
+   - Expected Output: 1
+   - Explanation: The single character "a" is considered a word with length 1.
 
 ## Extra Insights
-- **Handling Edge Cases**: The function efficiently handles cases with leading, trailing, or multiple spaces.
-- **Optimization**: If it's necessary to be more runtime-efficient in a language with built-in string utilities (e.g., Python), you might split and use the end of the list for the word directly.
+- **Edge Case Handling**: Ensure to handle strings with only spaces or empty inputs.
+- **Efficiency**: The solution is efficient with O(n) time complexity and constant space usage.

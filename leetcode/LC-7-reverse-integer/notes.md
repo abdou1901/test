@@ -1,0 +1,2 @@
+The solution effectively reverses the digits, but it's important to handle the case when the reversed number overflows a 32-bit signed integer. Alternatively, consider using additional checks for value ranges during each digit extraction step to further simplify the code.
+It's also a good practice to ensure all boundaries the algorithm were described are tested.
